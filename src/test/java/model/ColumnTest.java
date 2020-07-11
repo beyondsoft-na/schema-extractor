@@ -1,9 +1,11 @@
 package model;
 
 import model.Column;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ColumnTest {
+
 
 
     @Test
@@ -12,6 +14,10 @@ public class ColumnTest {
         column.setColumnType("varchar(20)");
         column.setColumnName("name");
         column.setRequired("true");
-        System.out.println(column);
+
+        Assert.assertEquals(column.getColumnName(),"name");
+        Assert.assertEquals(column.getColumnType(),"varchar(20)");
+        Assert.assertEquals(column.getRequired(),"true");
+
     }
 }

@@ -2,6 +2,7 @@ package model;
 
 import model.Column;
 import model.Relation;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public class RelationTest {
 
         relation.setColumn(columnArrayList);
 
-        System.out.println(relation);
+        Assert.assertEquals(relation.getName(),"car source");
+        Assert.assertEquals(relation.getRelation_type(),"base");
     }
 
 }
