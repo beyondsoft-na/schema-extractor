@@ -16,6 +16,8 @@ phases:
       - terraform -version
   build:
     commands:
+      - mvn clean install
+      - mvn test
       - cd ../terraform && terraform init
       - terraform apply -auto-approve
   post_build:
