@@ -7,11 +7,9 @@ env:
 phases:
   install:
     commands:
-      - yum install unzip
-      - yum update
+      - mkdir download && cd download
   pre_build:
     commands:
-      - mkdir download && cd download
       - wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
       - unzip terraform_${TF_VERSION}_linux_amd64.zip
       - mv terraform /usr/local/bin/
