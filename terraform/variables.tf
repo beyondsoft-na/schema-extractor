@@ -1,9 +1,9 @@
 variable "aws_region" {
   type    = string
-  default = "us-west-1"
+  default = "us-west-2"
 }
 
 variable "rds_vpc_id" {
   type    = string
-  default = "vpc-3bee665c"
+  default = "vpc-65cca403"
 }
