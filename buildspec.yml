@@ -1,26 +1,24 @@
 version: 0.2
 
+env:
+  variables:
+    TF_VERSION: "0.12.28"
+
 phases:
   install:
     commands:
+      - sudo yum install unzip
+      - sudo yum update
+  pre_build:
+    commands:
+      - mkdir download && cd download
+      - wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
+      - unzip terraform_${TF_VERSION}_linux_amd64.zip
+      - sudo mv terraform /usr/local/bin/
+  build:
+    commands:
       - terraform -version
-      # - gem uninstall -x -i /opt/jruby/lib/ruby/gems/shared bundler
-      # - gem install bundler --version 1.15.4
-      # - gem install warbler
-#   pre_build:
-#     commands:
-#       - gem install thor --version 0.20
-#       - bundle install
-#   build:
-#     commands:
-#       - bundle exec gem build convergdb.gemspec
-#       - warble
-# artifacts:
-#   files:
-#     - buildspec_integration.yml
-#     - buildspec_tagging.yml
-#     - convergdb-*-java.gem
-#     - src.jar
-#     - bin/*
-#     - test/fixtures/bin/*
-#     - test/fixtures/integration_test_*/**/*
+artifacts:
+  files:
+    - buildspec_rds.yml
+    - terraform/*

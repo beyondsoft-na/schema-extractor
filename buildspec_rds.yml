@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - cd terraform
+      - terraform init
+  pre_build:
+    commands:
+      - terraform apply -auto-approve
+  build:
+    commands:
+      - terraform destroy -auto-approve
+# artifacts:
+#   files:
+#     - buildspec_rds.yml
+#     - terraform/*
