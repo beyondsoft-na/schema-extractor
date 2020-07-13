@@ -9,7 +9,7 @@ resource "aws_db_instance" "progres-test" {
   engine_version         = "11.6"
   instance_class         = "db.t2.micro"
   name                   = "mydb"
-  username               = "postgre"
+  username               = "postgresql"
   password               = "admin12345"
   parameter_group_name   = "default.postgres11"
   publicly_accessible    = true
@@ -39,6 +39,17 @@ resource "aws_security_group" "postgres_sg" {
 }
 
 output "rds_endpoint" {
-  value = join("${aws_db_instance.progres-test.endpoint}",["jdbc:postgresql://","/postgres"])
+  value = "jdbc:postgresql://${aws_db_instance.progres-test.endpoint}/postgres"
 }
 
+output "rds_user" {
+  value = aws_db_instance.progres-test.username
+}
+
+output "rds_password" {
+  value = aws_db_instance.progres-test.password
+}
+
+output "rds_engine" {
+  value = aws_db_instance.progres-test.engine
+}
