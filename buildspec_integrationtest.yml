@@ -29,17 +29,18 @@ phases:
       - cd ..
       - echo "Intergation Test"
       - ls
-      - java -jar \
-      - -Ddb_name=$DB_NAME \
-      - -Dschema=$DS_SCHEMA \
-      - -Doutput_file=. \
-      - -Ddatabase=$DB_ENDPOINT \
-      - -Ddb_engine=$DB_ENGINE \
-      - -Ddriver_jar=/lib/postgresql-9.1-901-1.jdbc4.jar \
-      - -Ddriver_class=org.postgresql.Driver \
-      - -Dusername=$DB_USER \
-      - -Dpassword=$DB_PASSWORD \
-      - target/schema-extractor-1.0.jar
+      # - java -jar \
+      #   -Ddb_name=$DB_NAME \
+      #   -Dschema=$DS_SCHEMA \
+      #   -Doutput_file=. \
+      #   -Ddatabase=$DB_ENDPOINT \
+      #   -Ddb_engine=$DB_ENGINE \
+      #   -Ddriver_jar=/lib/postgresql-9.1-901-1.jdbc4.jar \
+      #   -Ddriver_class=org.postgresql.Driver \
+      #   -Dusername=$DB_USER \
+      #   -Dpassword=$DB_PASSWORD \
+      #   target/schema-extractor-1.0.jar
+      - java -jar -Ddb_name=$DB_NAME -Dschema=$DS_SCHEMA -Ddatabase=$DB_ENDPOINT -Ddb_engine=$DB_ENGINE -Ddriver_jar=/lib/postgresql-9.1-901-1.jdbc4.jar -Ddriver_class=org.postgresql.Driver -Dusername=$DB_USER -Dpassword=$DB_PASSWORD target/schema-extractor-1.0.jar
       - sh scripts/validation.sh customer postgres
     finally:
       - cd terraform && terraform destroy -auto-approve
