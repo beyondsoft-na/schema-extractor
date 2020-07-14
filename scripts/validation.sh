@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-table="sql_features"
+table=$DS_TABLE
 database_engine=$DB_ENGINE
 
 file1=$(ls | grep $table)
