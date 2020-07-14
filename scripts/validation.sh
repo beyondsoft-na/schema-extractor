@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
-table=$1
-database_engine=$2
+table="sql_features"
+database_engine=$DB_ENGINE
 
 file1=$(ls | grep $table)
 echo $file1

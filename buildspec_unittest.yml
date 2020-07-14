@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - mvn clean install
+  pre_build:
+    commands:
+      - echo "Unit Test"
+      - mvn test
+  build:
+    commands:
+      - echo "Unit Test completed on:" `date`
+artifacts:
+  files:
+    - buildspec_integrationtest.yml
+    - terraform/*
+    - target/*
+    - scripts/*
+    - lib/*
+    - src/*
