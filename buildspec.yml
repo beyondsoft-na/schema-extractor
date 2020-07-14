@@ -18,11 +18,26 @@ phases:
     commands:
       - cd ..
       - mvn clean install
+      - echo "Unit Test"
       - mvn test
       - cd terraform && terraform init
       - terraform apply -auto-approve
   post_build:
     commands:
+      - cd ..
+      - echo "Intergation Test"
+      - java -jar \
+        -Ddb_name=dvdrental \
+        -Dschema=public \
+        -Doutput_file=. \
+        -Ddatabase=jdbc:postgresql://localhost:5432/dvdrental \
+        -Ddb_engine=postgres \
+        -Ddriver_jar=../lib/9.1-901-1.jdbc4/postgresql-9.1-901-1.jdbc4.jar \
+        -Ddriver_class=org.postgresql.Driver \
+        -Dusername=postgres \
+        -Dpassword=admin \
+        target/schema-extractor-1.0.jar
+      - sh scripts/validation.sh customer postgres
       - terraform destroy -auto-approve
 # artifacts:
 #   files:
