@@ -1,0 +1,72 @@
+domain "postgres" {
+  schema "information_schema" {
+    relation "sql_features_src" {
+      relation_type = base
+      attributes {
+        attribute "feature_id" {
+          required = false
+          data_type = varchar
+        }
+        attribute "feature_name" {
+          required = false
+          data_type = varchar
+        }
+        attribute "sub_feature_id" {
+          required = false
+          data_type = varchar
+        }
+        attribute "sub_feature_name" {
+          required = false
+          data_type = varchar
+        }
+        attribute "is_supported" {
+          required = false
+          data_type = varchar(3)
+        }
+        attribute "is_verified_by" {
+          required = false
+          data_type = varchar
+        }
+        attribute "comments" {
+          required = false
+          data_type = varchar
+        }
+      }
+    }
+    relation "sql_features_target" {
+      relation_type = derived {
+        source = "sql_features"
+      }
+      attributes {
+        attribute "feature_id" {
+          required = false
+          data_type = varchar
+        }
+        attribute "feature_name" {
+          required = false
+          data_type = varchar
+        }
+        attribute "sub_feature_id" {
+          required = false
+          data_type = varchar
+        }
+        attribute "sub_feature_name" {
+          required = false
+          data_type = varchar
+        }
+        attribute "is_supported" {
+          required = false
+          data_type = varchar(3)
+        }
+        attribute "is_verified_by" {
+          required = false
+          data_type = varchar
+        }
+        attribute "comments" {
+          required = false
+          data_type = varchar
+        }
+      }
+    }
+  }
+}
