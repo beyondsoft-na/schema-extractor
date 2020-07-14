@@ -3,9 +3,9 @@
 table=$DS_TABLE
 database_engine=$DB_ENGINE
 
-file1=$(ls target/ | grep $table)
+file1=$(ls | grep $table)
 echo $file1
-file2='src/test/resources/'$database_engine'_validation.schema'
+file2='src/test/resources/'$database_engine'_validation_schema'
 echo $file2
 
 diff -u $file1 $file2 > /dev/null
