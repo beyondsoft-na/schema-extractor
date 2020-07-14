@@ -38,7 +38,7 @@ phases:
         -Ddriver_class=org.postgresql.Driver \
         -Dusername=$DB_USER \
         -Dpassword=$DB_PASSWORD \
-        target/schema-extractor-1.0.jar
+        /target/schema-extractor-1.0.jar
       - ls
       - sh scripts/validation.sh customer postgres
     finally:
