@@ -12,13 +12,11 @@ diff -u $file1 $file2 > /dev/null
 
 comp_value=$?
 
-if [ $comp_value -eq 1 ]
+if [ $comp_value -eq 0 ]
 then
-
-    echo "schema are different"
-
-    exit 1;
+	echo "schema are the same"
 else
-    echo "schema are the same"
+    echo "schema are different"
+    exit 1;
 fi
 
